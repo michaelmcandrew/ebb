@@ -1,0 +1,5 @@
+export class {{ name.UpperCamel }} {
+{% for field in fields %}
+  public {{ field.name }}: {{ field.ts_type }}
+{% endfor %}
+}

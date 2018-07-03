@@ -1,0 +1,9 @@
+<div class="component component-{{ name.kebab }}">
+  <div class="entity-title">{{ name.kebab }}</div>
+{% for field in fields %}
+  <div class="field field-{{ field.name }}">
+    <span class="field-label field-label-{{ field.name }}">{{ field.title }}</span>
+    <span class="field-value field-value-{{ field.name }}">{{ '{{' }} {{ name.lowerCamel }}.{{ field.name }} {{ '}}' }}</span>
+  </div>
+{% endfor %}
+</div>
