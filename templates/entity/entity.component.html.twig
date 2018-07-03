@@ -1,9 +1,14 @@
+<mat-card>
+  <mat-card-title>
+    {{ name.UpperCamel }}
+  </mat-card-title>
+  {% for field in fields %}<mat-form-field>
+    <mat-label>{{ field.title }}</mat-label>
+    <input matInput type="text" id="{{ field.name }}" [(ngModel)]="{{ name.lowerCamel }}.{{ field.name }}" name="{{ field.name }}">
+  </mat-form-field>
+  {% endfor %}
+
+</mat-card>
 <div class="component component-{{ name.kebab }}">
-  <div class="entity-title">{{ name.kebab }}</div>
-{% for field in fields %}
-  <div class="field field-{{ field.name }}">
-    <span class="field-label field-label-{{ field.name }}">{{ field.title }}</span>
-    <span class="field-value field-value-{{ field.name }}">{{ '{{' }} {{ name.lowerCamel }}.{{ field.name }} {{ '}}' }}</span>
-  </div>
-{% endfor %}
+  <div class="entity-title"></div>
 </div>
