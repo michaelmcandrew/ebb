@@ -113,3 +113,5 @@ foreach($entities['values'] as $entity){
   ]));
 
 }
+
+echo "Generated boilerplate.\n";
