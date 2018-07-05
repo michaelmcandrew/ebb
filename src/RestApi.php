@@ -1,5 +1,5 @@
 <?php
-namespace Cig;
+namespace Ebb;
 // use Symfony\Component\Cache\Simple\FilesystemCache;
 class RestApi {
 
