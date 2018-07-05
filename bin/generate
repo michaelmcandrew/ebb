@@ -1,21 +1,18 @@
 #!/usr/bin/env php
 <?php
-require_once 'vendor/autoload.php';
-use Illuminate\Support\Str;
-use Symfony\Component\Cache\Simple\FilesystemCache;
+namespace Ebb;
 
-$dotenv = new Dotenv\Dotenv(__DIR__ .'/..');
+require_once 'vendor/autoload.php';
+
+$dotenv = new \Dotenv\Dotenv(__DIR__ .'/..');
 $dotenv->load();
 $dotenv->required([
-  'CIVI_REST_API_BASE_URL',
-  'INTERFACE_DIR'
+    'CIVI_REST_API_BASE_URL',
+    'INTERFACE_DIR'
 ]);
-
-$cache = new FilesystemCache('', 0, __DIR__ .'/../cache/api');
-$api = new Cig\RestApi(
-  getenv('CIVI_REST_API_BASE_URL'),
-  $cache
-);
+$c = new Container();
+$f = $c->get('component_factory');
+exit;
 
 $loader = new Twig_Loader_Filesystem('templates');
 $twig = new Twig_Environment($loader);
