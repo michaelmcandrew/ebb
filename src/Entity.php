@@ -30,7 +30,7 @@ class Entity
         foreach ($entity['fields'] as $original) {
             try {
                 if (!empty($original['entity']) && $original['entity'] == $this->names['original']) {
-                    $field = new Field($original);
+                    $field = new Field($original, $this);
                     $this->fields[$field->getName()] = $field;
                 } else {
                     throw new \Exception('blah');
