@@ -34,9 +34,9 @@ class Container extends ContainerBuilder
 
         $this->register('angular_factory', 'Ebb\Angular\AngularFactory')
             ->addArgument(new Reference('api'))
-            ->addArgument(new Reference('log'))
             ->addArgument(new Reference('generator'))
-            ->addArgument(getenv('INTERFACE_DIR'));
+            ->addArgument(getenv('INTERFACE_DIR'))
+            ->addArgument(new Reference('log'));
 
         $this->register('cache.api', 'Symfony\Component\Cache\Simple\FilesystemCache')
             ->setArguments(['', 0, Kernel::getRootDir() . '/cache/api']);

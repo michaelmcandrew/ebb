@@ -13,7 +13,7 @@ abstract class InterfaceFactory
 
     public $templateFiles = [];
 
-    public function __construct(RestApi $api, LoggerInterface $log, Generator $generator, $outputDir)
+    public function __construct(RestApi $api, Generator $generator, $outputDir, LoggerInterface $log)
     {
         $this->api = $api;
         $this->log = $log;
@@ -56,13 +56,13 @@ abstract class InterfaceFactory
         // Create entity objects and add them to $this->entities
         foreach ($entities as $entityName => $entity) {
             try {
-                $entity = new Entity($entityName, $entity);
+                $entity = new Entity($entityName, $entity, $this->log);
                 $this->entities[$entity->names['kebab']] = $entity;
             } catch (\Exception $e) {
                 $this->log->warning($e->getMessage());
             }
         }
     }
-    
+
     abstract protected function generate();
 }

@@ -5,8 +5,9 @@ use Illuminate\Support\Str;
 
 class Entity
 {
-    public function __construct($name, $entity)
+    public function __construct($name, $entity, $log)
     {
+        $this->log = $log;
         $this->setNames($name);
         $this->setFields($entity);
     }
@@ -35,7 +36,7 @@ class Entity
                     throw new \Exception('blah');
                 }
             } catch (\Exception $e) {
-                // blah
+                $this->log->info($e->getMessage());
             }
         }
         if (!isset($this->fields)) {
