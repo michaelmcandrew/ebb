@@ -1,15 +1,14 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Contact } from '../contact.model';
+import { {{entity.names.upper_camel}} } from '../{{entity.names.kebab}}.model';
 
 @Component({
-  selector: 'app-contact',
-  templateUrl: './contact.component.html',
-  styleUrls: ['./contact.component.css']
+  selector: 'app-{{entity.names.kebab}}',
+  templateUrl: './{{entity.names.kebab}}.component.html',
+  styleUrls: ['./{{entity.names.kebab}}.component.css']
 })
 
-export class ContactComponent implements OnInit {
-  @Input() contact : Contact;
+export class {{entity.names.upper_camel}}Component implements OnInit {
+  @Input() {{entity.names.lower_camel}} : {{entity.names.upper_camel}};
   ngOnInit() {
   }
-
 }

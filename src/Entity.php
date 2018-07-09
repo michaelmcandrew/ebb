@@ -25,7 +25,7 @@ class Entity
     {
         $this->original = $entity;
         if (empty($entity['fields'])) {
-            throw new \Exception("No fields defined for entity '{$this->names['original']}'.");
+            throw new \Exception("No fields defined for entity {$this->names['original']}.");
         }
         foreach ($entity['fields'] as $original) {
             try {
@@ -33,14 +33,14 @@ class Entity
                     $field = new Field($original, $this);
                     $this->fields[$field->getName()] = $field;
                 } else {
-                    throw new \Exception('blah');
+                    throw new \Exception("No matching entity field for {$original['name']} ({$this->names['original']}).");
                 }
             } catch (\Exception $e) {
                 $this->log->info($e->getMessage());
             }
         }
         if (!isset($this->fields)) {
-            throw new \Exception("No fields with 'entity' defined for entity '{$this->names['original']}'.");
+            throw new \Exception("No fields with 'entity' defined for entity {$this->names['original']}.");
         }
     }
 }
