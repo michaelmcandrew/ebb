@@ -14,7 +14,6 @@ $dotenv->required([
 $container = new Container();
 echo "Initialize factory...\n";
 $factory = $container->get('angular_factory');
-// var_dump($factory->entities['contact']->original['fields']);
 echo "Start generating boilerplate...\n";
 $factory->generate();
 echo "Finished generating boilerplate.\n";
