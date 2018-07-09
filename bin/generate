@@ -10,86 +10,11 @@ $dotenv->required([
     'CIVI_REST_API_BASE_URL',
     'INTERFACE_DIR'
 ]);
-$c = new Container();
-$f = $c->get('component_factory');
-exit;
-// var_dump($f);
 
-$loader = new Twig_Loader_Filesystem('templates');
-$twig = new Twig_Environment($loader);
-
-$ngDir = getenv('INTERFACE_DIR');
-$modelTemplate = $twig->load('entity.model.ts.twig');
-$componentTemplate = $twig->load('entity/entity.component.ts.twig');
-$componentHTMLTemplate = $twig->load('entity/entity.component.html.twig');
-$componentTestTemplate = $twig->load('entity/entity.component.spec.ts.twig');
-$componentCSSTemplate = $twig->load('entity/entity.component.css.twig');
-
-// From CRM_Utils_Type::typeToString()
-
-
-
-
-$entities = $api->query('Entity', 'get');
-foreach ($entities['values'] as $entity) {
-    $name['UpperCamel'] = ucfirst(Str::camel($entity));
-    $name['lowerCamel'] = lcfirst(Str::camel($entity));
-    $name['kebab'] = Str::kebab($entity);
-
-    $fields = $api->query($entity, 'getfields')['values'];
-    foreach ($fields as $k => &$field) {
-        if ((empty($field['entity']))) {
-            unset($fields[$k]);
-        } elseif ($field['entity'] != $entity) {
-            unset($fields[$k]);
-        }
-        // Clean types
-        if (!isset($field['type'])) {
-            $field['type'] = 2;
-        }
-        if (isset($types[$field['type']])) {
-            $field['ts_type'] = $types[$field['type']];
-        } else {
-            echo "Could not find type for {$entity}.{$field['name']}\n";
-            var_dump($field);
-        }
-    }
-
-    // Generate model
-    file_put_contents("{$ngDir}/app/{$name['kebab']}.model.ts", $modelTemplate->render([
-        'name' => $name,
-        'fields' => $fields,
-    ]));
-
-    // Generate component directory
-    $componentDir = "{$ngDir}/app/{$name['kebab']}";
-    if (!is_dir($componentDir)) {
-        mkdir($componentDir);
-    }
-
-    // Generate component file
-    file_put_contents("{$ngDir}/app/{$name['kebab']}/{$name['kebab']}.component.ts", $componentTemplate->render([
-        'name' => $name,
-        'fields' => $fields,
-    ]));
-
-    // Generate component html
-    file_put_contents("{$ngDir}/app/{$name['kebab']}/{$name['kebab']}.component.html", $componentHTMLTemplate->render([
-        'name' => $name,
-        'fields' => $fields,
-    ]));
-
-    // Generate component test
-    file_put_contents("{$ngDir}/app/{$name['kebab']}/{$name['kebab']}.component.spec.ts", $componentTestTemplate->render([
-        'name' => $name,
-        'fields' => $fields,
-    ]));
-
-    // Generate component css
-    file_put_contents("{$ngDir}/app/{$name['kebab']}/{$name['kebab']}.component.css", $componentCSSTemplate->render([
-        'name' => $name,
-        'fields' => $fields,
-    ]));
-}
-
-echo "Generated boilerplate.\n";
+$container = new Container();
+echo "Initialize factory...\n";
+$factory = $container->get('angular_factory');
+// var_dump($factory->entities['contact']->original['fields']);
+echo "Start generating boilerplate...\n";
+$factory->generate();
+echo "Finished generating boilerplate.\n";

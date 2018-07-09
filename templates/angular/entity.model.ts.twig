@@ -1,0 +1,5 @@
+export class {{entity.names.upper_camel}} {
+{% for field in fields %}
+  public {{ field.name }}: {{ field.type }}
+{% endfor %}
+}

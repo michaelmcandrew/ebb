@@ -1,11 +1,9 @@
 <?php
 namespace Ebb;
 
-use Illuminate\Support\Str;
-
-class Property
+class CiviTypes
 {
-    public $civiTypes = [
+    public static $translation = [
         1 => 'number',
         2 => 'string',
         4 => 'Date',
@@ -29,19 +27,4 @@ class Property
         'String' => 'string',
         'Text' => 'string',
     ];
-
-    public function __construct($name)
-    {
-        $this->name = $name;
-    }
-
-    public function setType($civiType)
-    {
-        $this->type = $this->civiTypes[$civiType];
-    }
-
-    public function setLabel($label)
-    {
-        $this->$label = $label;
-    }
 }
