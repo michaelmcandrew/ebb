@@ -31,11 +31,9 @@ class AngularFactory extends InterfaceFactory
 
     public function generate()
     {
+        $this->mkdir("{$this->outputDir}/app/entities");
         foreach ($this->entities as $entity) {
-            $componentDir = "{$this->outputDir}/app/{$entity->names['kebab']}";
-            if (!is_dir($componentDir)) {
-                mkdir($componentDir);
-            }
+            $this->mkdir("{$this->outputDir}/app/entities/{$entity->names['kebab']}");
             foreach (array_keys($this->templateDefinitions) as $def) {
                 $this->generator->generate($def, [
                     'entity' => $entity,
@@ -46,13 +44,6 @@ class AngularFactory extends InterfaceFactory
     }
 
 
-    public function generateComponentDirectory($entity)
-    {
-        $componentDir = "{$this->outputDir}/app/{$entity->names['kebab']}";
-        if (!is_dir($componentDir)) {
-            mkdir($componentDir);
-        }
-    }
 
     public function generateComponentFile($entity)
     {

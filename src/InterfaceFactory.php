@@ -65,4 +65,11 @@ abstract class InterfaceFactory
     }
 
     abstract protected function generate();
+
+    public function mkdir($path)
+    {
+        if (!is_dir($path)) {
+            mkdir($path);
+        }
+    }
 }
