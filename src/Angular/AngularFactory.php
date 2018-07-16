@@ -9,23 +9,23 @@ class AngularFactory extends InterfaceFactory
     public $templateDefinitions = [
         'model' => [
             'template' => 'angular/entity.model.ts.twig',
-            'filename' => 'app/{{entity.names.kebab}}.model.ts'
+            'filename' => 'app/entities/{{entity.names.kebab}}.model.ts'
         ],
         'component' => [
             'template' => 'angular/entity/entity.component.ts.twig',
-            'filename' => 'app/{{entity.names.kebab}}/{{entity.names.kebab}}.component.ts'
+            'filename' => 'app/entities/{{entity.names.kebab}}/{{entity.names.kebab}}.component.ts'
         ],
         'componentHTML' => [
             'template' => 'angular/entity/entity.component.html.twig',
-            'filename' => 'app/{{entity.names.kebab}}/{{entity.names.kebab}}.component.html'
+            'filename' => 'app/entities/{{entity.names.kebab}}/{{entity.names.kebab}}.component.html'
         ],
         'componentTest' => [
             'template' => 'angular/entity/entity.component.spec.ts.twig',
-            'filename' => 'app/{{entity.names.kebab}}/{{entity.names.kebab}}.component.spec.ts'
+            'filename' => 'app/entities/{{entity.names.kebab}}/{{entity.names.kebab}}.component.spec.ts'
         ],
         'componentCSS' => [
             'template' => 'angular/entity/entity.component.css.twig',
-            'filename' => 'app/{{entity.names.kebab}}/{{entity.names.kebab}}.component.css'
+            'filename' => 'app/entities/{{entity.names.kebab}}/{{entity.names.kebab}}.component.css'
         ]
     ];
 
