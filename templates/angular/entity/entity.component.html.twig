@@ -1,14 +1,13 @@
-<mat-card>
+<mat-card [class.mat-elevation-z2]>
   <mat-card-title>
     {{ entity.names.sentence }}
   </mat-card-title>
+  <mat-card-subtitle>
+    {{ entity.names.sentence }}
+  </mat-card-subtitle>
   {% for field in fields %}<mat-form-field>
     <mat-label>{{ field.label }}</mat-label>
     <input matInput type="text" id="{{ field.name }}" [(ngModel)]="{{ entity.names.lower_camel }}.{{ field.name }}" name="{{ field.name }}">
   </mat-form-field>
   {% endfor %}
-
 </mat-card>
-<div class="component component-{{ entity.names.kebab }}">
-  <div class="entity-title"></div>
-</div>
