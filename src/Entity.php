@@ -15,9 +15,9 @@ class Entity
 
     private function setNames($name)
     {
-        $this->names['original'] = $name;
-        $this->names['upper_camel'] = ucfirst(Str::camel($name));
-        $this->names['lower_camel'] = lcfirst(Str::camel($name));
+        $this->name = $this->names['original'] = $name;
+        $this->names['upperCamel'] = ucfirst(Str::camel($name));
+        $this->names['lowerCamel'] = lcfirst(Str::camel($name));
         $this->names['kebab'] = Str::kebab($name);
         $this->names['sentence'] = ucfirst(str_replace('-', ' ', Str::kebab($name)));
     }
