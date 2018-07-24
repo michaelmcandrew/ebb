@@ -8,8 +8,8 @@ class AngularFactory extends InterfaceFactory
 {
     public $templateDefinitions = [
         'model' => [
-            'template' => 'angular/entity.model.ts.twig',
-            'filename' => 'app/entities/{{entity.names.kebab}}.model.ts'
+            'template' => 'angular/entity/entity.model.ts.twig',
+            'filename' => 'app/entities/{{entity.names.kebab}}/{{entity.names.kebab}}.model.ts'
         ],
         'component' => [
             'template' => 'angular/entity/entity.component.ts.twig',
