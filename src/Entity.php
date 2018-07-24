@@ -10,6 +10,7 @@ class Entity
         $this->log = $log;
         $this->setNames($name);
         $this->setFields($entity);
+        $this->setLabelField();
     }
 
     private function setNames($name)
@@ -42,5 +43,17 @@ class Entity
         if (!isset($this->fields)) {
             throw new \Exception("No fields with 'entity' defined for entity {$this->names['original']}.");
         }
+    }
+
+    function setLabelField(){
+        $choices = ['display_name', 'title', 'label'];
+        foreach($choices as $choice){
+            if(isset($this->fields[$choice])){
+                $this->labelField = $choice;
+                return;
+            }
+        }
+        $this->labelField = false;
+        return;
     }
 }
