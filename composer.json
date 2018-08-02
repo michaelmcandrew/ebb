@@ -12,11 +12,5 @@
     "psr-4": {
       "Ebb\\": "src"
     }
-  },
-  "repositories": [
-    {
-      "type": "git",
-      "url": "https://github.com/civicrm/zetacomponents-mail.git"
-    }
-  ]
+  }
 }
