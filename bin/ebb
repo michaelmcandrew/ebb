@@ -1,1 +1,22 @@
-echo ebb!
+#!/usr/bin/env php
+<?php
+namespace Ebb;
+
+require_once 'vendor/autoload.php';
+
+$dotenv = new \Dotenv\Dotenv(__DIR__ .'/..');
+$dotenv->load();
+$dotenv->required([
+    'CIVI_REST_API_BASE_URL',
+    'INTERFACE_DIR'
+]);
+
+$container = new Container();
+$log = $container->get('log');
+
+$log->info('Initialize factory...');
+$factory = $container->get('civicrm_schema_factory');
+
+$log->info('Start generating boilerplate...');
+$factory->generate();
+$log->info('Finished generating boilerplate.');
