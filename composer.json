@@ -1,13 +1,13 @@
 {
   "name": "michaelmcandrew/ebb",
   "require": {
-    "twig/twig": "^2.0",
-    "illuminate/support": "^5.0",
-    "vlucas/phpdotenv": "^2.0",
-    "symfony/cache": "^4.0",
-    "monolog/monolog": "^1.0",
-    "symfony/console": ">=3.0",
-    "guzzlehttp/guzzle": "^6.3"
+    "twig/twig": "@stable",
+    "illuminate/support": "@stable",
+    "vlucas/phpdotenv": "@stable",
+    "symfony/cache": "@stable",
+    "monolog/monolog": "@stable",
+    "symfony/console": "@stable",
+    "guzzlehttp/guzzle": "@stable"
   },
   "autoload": {
     "psr-4": {
