@@ -13,14 +13,16 @@ abstract class InterfaceFactory
 
     public $templateFiles = [];
 
-    public function __construct(RestApi $api, Generator $generator, $outputDir, LoggerInterface $log)
+    public function __construct(RestApi $api, $outputDir, LoggerInterface $log, Generator $generator = null)
     {
         $this->api = $api;
         $this->log = $log;
-        $this->generator = $generator;
-        $this->generator->init($this->templateDefinitions, $outputDir);
         $this->outputDir = $outputDir;
         $this->loadEntities();
+        if($generator){
+            $this->generator = $generator;
+            $this->generator->init($this->templateDefinitions, $outputDir);
+        }
     }
 
     /**
