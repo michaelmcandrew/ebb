@@ -5,6 +5,9 @@ use Illuminate\Support\Str;
 
 class Entity
 {
+
+    private $log;
+
     public function __construct($name, $entity, $log)
     {
         $this->log = $log;

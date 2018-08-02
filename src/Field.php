@@ -5,6 +5,9 @@ use Illuminate\Support\Str;
 
 class Field
 {
+
+    private $entity;
+
     public function __construct($original, Entity $entity)
     {
         $this->name = $original['name'];
