@@ -1,7 +1,13 @@
-# CiviCRM interface generator
+# Ebb - generate a json schema for a CiviCRM instance
 
-Generates CiviCRM interfaces for frameworks like [Angular](https://angular.io) and [RAML](https://raml.org/).
+Useful for things like:
 
-## Implementations
+* Angular Schematics to generate a Material Design user interface for CiviCRM
+* generating a RAML API for CiviCRM
 
-* [Flow](https://github.com/michaelmcandrew/flow) - Material design interface for CiviCRM written in Angular.
+## Usage
+
+```
+$ composer global require michaelmcandrew/ebb
+$ ebb generate "https://example.org/sites/all/modules/civicrm/extern/rest.php?key=xxx&api_key=xxx"
+```
