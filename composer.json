@@ -1,4 +1,5 @@
 {
+  "name": "michaelmcandrew/ebb",
   "require": {
     "twig/twig": "^2.0",
     "illuminate/support": "^5.0",
