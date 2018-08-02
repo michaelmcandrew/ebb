@@ -1,25 +1,19 @@
 #!/usr/bin/env php
 <?php
+namespace Ebb;
+
+use Symfony\Component\Console\Application;
+use Ebb\Command\GenerateCommand;
 
 if (file_exists(__DIR__.'/../../../autoload.php')) {
-    // this file exists when installed globally
+    // if package is installed globally
     require __DIR__.'/../../../autoload.php';
 } else {
     require __DIR__.'/../vendor/autoload.php';
 }
 
-$dotenv = new \Dotenv\Dotenv(__DIR__ .'/..');
-$dotenv->load();
-$dotenv->required([
-    'CIVI_REST_API_BASE_URL',
-    'INTERFACE_DIR'
-]);
-
-$log = $container->get('log');
-
-$log->info('Initialize factory...');
-$factory = $container->get('civicrm_schema_factory');
-
-$log->info('Start generating boilerplate...');
-$factory->generate();
-$log->info('Finished generating boilerplate.');
+$app = new Application;
+$command = new GenerateCommand;
+$app->add($command);
+$app->setDefaultCommand('generate');
+$app->run();
