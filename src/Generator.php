@@ -55,7 +55,7 @@ class Generator
         foreach ($entities as $entityName => $entity) {
             try {
                 $entity = new Entity($entityName, $entity, $this->log);
-                $this->entities[$entity->names['kebab']] = $entity;
+                $this->entities[$entity->name] = $entity;
             } catch (\Exception $e) {
                 $this->log->notice($e->getMessage());
             }

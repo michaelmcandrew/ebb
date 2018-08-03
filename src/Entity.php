@@ -5,24 +5,14 @@ use Illuminate\Support\Str;
 
 class Entity
 {
-
     private $log;
 
     public function __construct($name, $entity, $log)
     {
+        $this->name = $name;
         $this->log = $log;
-        $this->setNames($name);
         $this->setFields($entity);
         $this->setLabelField();
-    }
-
-    private function setNames($name)
-    {
-        $this->name = $this->names['original'] = $name;
-        $this->names['upperCamel'] = ucfirst(Str::camel($name));
-        $this->names['lowerCamel'] = lcfirst(Str::camel($name));
-        $this->names['kebab'] = Str::kebab($name);
-        $this->names['sentence'] = ucfirst(str_replace('-', ' ', Str::kebab($name)));
     }
 
     private function setFields($entity)
@@ -48,10 +38,11 @@ class Entity
         }
     }
 
-    function setLabelField(){
+    public function setLabelField()
+    {
         $choices = ['display_name', 'title', 'label'];
-        foreach($choices as $choice){
-            if(isset($this->fields[$choice])){
+        foreach ($choices as $choice) {
+            if (isset($this->fields[$choice])) {
                 $this->labelField = $choice;
                 return;
             }
