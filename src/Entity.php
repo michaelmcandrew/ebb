@@ -17,7 +17,6 @@ class Entity
 
     private function setFields($entity)
     {
-        $this->original = $entity;
         if (empty($entity['fields'])) {
             throw new \Exception("No fields defined for entity {$this->name}.");
         }
