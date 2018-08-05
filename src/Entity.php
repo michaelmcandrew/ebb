@@ -25,7 +25,7 @@ class Entity
             try {
                 if (!empty($original['entity']) && $original['entity'] == $this->name) {
                     $field = new Field($original, $this);
-                    $this->fields[$field->getName()] = $field;
+                    $this->fields[] = $field;
                 } else {
                     throw new \Exception("No matching entity field for {$original['name']} ({$this->name}).");
                 }
@@ -41,8 +41,9 @@ class Entity
     public function setLabelField()
     {
         $choices = ['display_name', 'title', 'label'];
+        $fieldNames = array_column($this->fields, 'name');
         foreach ($choices as $choice) {
-            if (isset($this->fields[$choice])) {
+            if (in_array($choice, $this->fields)) {
                 $this->labelField = $choice;
                 return;
             }
