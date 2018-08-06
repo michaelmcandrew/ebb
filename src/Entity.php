@@ -12,7 +12,7 @@ class Entity
         $this->name = $name;
         $this->log = $log;
         $this->setFields($entity);
-        $this->setLabelField();
+        $this->setTitleField();
     }
 
     private function setFields($entity)
@@ -37,17 +37,17 @@ class Entity
         }
     }
 
-    public function setLabelField()
+    public function setTitleField()
     {
         $choices = ['display_name', 'title', 'label'];
         $fieldNames = array_column($this->fields, 'name');
         foreach ($choices as $choice) {
             if (in_array($choice, $this->fields)) {
-                $this->labelField = $choice;
+                $this->titleField = $choice;
                 return;
             }
         }
-        $this->labelField = false;
+        $this->titleField = false;
         return;
     }
 }
