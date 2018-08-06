@@ -42,7 +42,7 @@ class Entity
         $choices = ['display_name', 'title', 'label'];
         $fieldNames = array_column($this->fields, 'name');
         foreach ($choices as $choice) {
-            if (in_array($choice, $this->fields)) {
+            if (in_array($choice, $fieldNames)) {
                 $this->titleField = $choice;
             }
         }
