@@ -44,10 +44,7 @@ class Entity
         foreach ($choices as $choice) {
             if (in_array($choice, $this->fields)) {
                 $this->titleField = $choice;
-                return;
             }
         }
-        $this->titleField = false;
-        return;
     }
 }
